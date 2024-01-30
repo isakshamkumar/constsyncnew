@@ -27,10 +27,8 @@ const decode = he.decode;
     const potentialFalseUrgencyElements = document.querySelectorAll('*');
 
     potentialFalseUrgencyElements.forEach((element) => {
-      console.log(element);
       if (isFalseUrgencyElement(element)) {
         console.log('Detected False Urgency:', element);
-        alert('hi')
         handleFalseUrgency(element);
       }
     });
@@ -40,7 +38,7 @@ const decode = he.decode;
     const decodedText = decode(element.innerText.toLowerCase());
 
     return (
-      decodedText.includes('ISC Machines Optical 6D Wireless Gamming Mouse - Adjustable DPI, High Sensitive Wireless Optical Gaming Mouse (2.4GHz Wireless, Bluetooth, Red)') ||
+      decodedText.includes('limited time') ||
       decodedText.includes('only a few left') ||
       checkElementStyles(element)
     );

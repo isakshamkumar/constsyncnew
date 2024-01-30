@@ -1,24 +1,22 @@
-// content.js
+
 // eslint-disable-next-line no-undef
 chrome.runtime.onInstalled.addListener(function () {
   console.log('background');
-  runDetection();
-});
 
-function runDetection() {
-  // Include the content.js logic here if needed
-  // eslint-disable-next-line no-undef
-  chrome.runtime.sendMessage({ action: 'darkPatternDetected', pattern: 'False Urgency' });
-}
+});
+let detectedPatterns=[];
+console.log('detected patterns');
+
 
 // eslint-disable-next-line no-undef
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
-  if (message.action === 'getDetectedPatterns') {
-      const detectedPatterns = getDetectedPatterns();
-      sendResponse(detectedPatterns);
+  console.log('inside listnerr');
+  if (message.action === 'darkPatternDetected') {
+    console.log('inside message action darkpatern');
+    detectedPatterns.push(message.pattern);
+  } else if (message.action === 'getDetectedPatterns') {
+    console.log('inside message action getdetected');
+    sendResponse(detectedPatterns);
   }
-}); 
+});
 
-function getDetectedPatterns() {
-  return ['False Urgency']; // Placeholder for detected patterns, replace with actual data
-}
