@@ -1,8 +1,11 @@
 // src/Popup.js
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const Popup = () => {
+  useEffect(()=>{
+    
+  },[])
   return (
     <div>
       <h1>Anti-Dark Pattern Extension</h1>
